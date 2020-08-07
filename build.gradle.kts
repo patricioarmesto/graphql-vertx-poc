@@ -21,23 +21,29 @@ val mainVerticleName = "com.github.patricioarmesto.GraphQLVerticle"
 val watchForChange = "src/**/*"
 val doOnChange = "./gradlew classes"
 val launcherClassName = "io.vertx.core.Launcher"
+val graphqlJavaTools = "6.0.2"
 
 application {
   mainClassName = launcherClassName
 }
 
 dependencies {
+
+  implementation("com.graphql-java-kickstart:graphql-java-tools:$graphqlJavaTools")
   implementation("io.vertx:vertx-web-client:$vertxVersion")
   implementation("io.vertx:vertx-web-graphql:$vertxVersion")
   implementation("io.vertx:vertx-web:$vertxVersion")
   testImplementation("io.vertx:vertx-junit5:$vertxVersion")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+
+  implementation("ch.qos.logback:logback-classic:1.2.3")
+
 }
 
-  java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-  }
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 tasks.withType<ShadowJar> {
   archiveClassifier.set("fat")

@@ -1,13 +1,14 @@
-type Task {
-  id: String
-  description: String
-  completed: Boolean
-}
-
 type Query {
-  allTasks(uncompletedOnly: Boolean = true): [Task]
+    books: [Book!]
 }
 
-type Mutation {
-  complete(id: String!): Boolean
+type Book {
+    id: Int!
+    name: String!
+    author: Author!
+}
+
+type Author {
+    id: Int!
+    name: String!
 }
