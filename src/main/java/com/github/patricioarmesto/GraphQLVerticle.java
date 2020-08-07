@@ -1,5 +1,7 @@
 package com.github.patricioarmesto;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import graphql.GraphQL;
 import graphql.kickstart.tools.SchemaParser;
 import graphql.schema.GraphQLSchema;
@@ -10,7 +12,7 @@ import io.vertx.ext.web.handler.graphql.GraphQLHandler;
 
 public class GraphQLVerticle extends AbstractVerticle {
 
-  private BookRepository bookRepository = new MockedBookRepository();
+  private BookRepository bookRepository;
   private AuthorRepository authorRepository;
 
   public static void main(String[] args) {
@@ -20,6 +22,9 @@ public class GraphQLVerticle extends AbstractVerticle {
 
   @Override
   public void start() {
+
+    Injector injector = Guice.createInjector(new BootstrapBinder(vertx));
+    bookRepository = injector.getInstance(BookRepository.class);
 
     GraphQL graphQL = setupGraphQL();
     GraphQLHandler graphQLHandler = GraphQLHandler.create(graphQL); // (1)

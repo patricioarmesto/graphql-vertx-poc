@@ -29,14 +29,14 @@ application {
 
 dependencies {
 
+  implementation  ("com.englishtown.vertx:vertx-guice:2.3.1")
   implementation("com.graphql-java-kickstart:graphql-java-tools:$graphqlJavaTools")
   implementation("io.vertx:vertx-web-client:$vertxVersion")
   implementation("io.vertx:vertx-web-graphql:$vertxVersion")
   implementation("io.vertx:vertx-web:$vertxVersion")
+  implementation("ch.qos.logback:logback-classic:1.2.3")
   testImplementation("io.vertx:vertx-junit5:$vertxVersion")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-
-  implementation("ch.qos.logback:logback-classic:1.2.3")
 
 }
 

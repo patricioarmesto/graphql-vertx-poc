@@ -1,5 +1,6 @@
 package com.github.patricioarmesto;
 
+import javax.inject.Singleton;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -7,6 +8,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
+@Singleton
 public class MockedBookRepository implements BookRepository {
 
   private Map<String, Book> books;
